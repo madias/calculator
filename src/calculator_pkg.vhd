@@ -1,0 +1,32 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+package calculator_pkg is
+
+	type CALCULATOR_SYMBOL_TYPE is record
+    input_value: INTEGER;
+	 input_type: std_logic;
+	 input_position: INTEGER;
+	end record;
+	
+CONSTANT NUMBER: std_logic:='0';
+CONSTANT OPCODE: std_logic:='1';	
+
+CONSTANT R232MODE: std_logic:='1';
+CONSTANT CALCMODE: std_logic:='0';
+
+CONSTANT REDBITS : INTEGER :=8;
+CONSTANT BLUEBITS : INTEGER :=8;
+CONSTANT GREENBITS : INTEGER :=8;
+
+CONSTANT ADD : INTEGER:=0;
+CONSTANT SUB: INTEGER:=1;
+CONSTANT MUL: INTEGER:=2;
+CONSTANT DIV: INTEGER:=3;
+CONSTANT ENTER: INTEGER:=4;
+CONSTANT BACKSPACE: INTEGER:=5;
+CONSTANT FINISHED: INTEGER:=6;
+CONSTANT ERROR: INTEGER:=7;
+CONSTANT BUSY: INTEGER:=8;
+	 
+end calculator_pkg;
