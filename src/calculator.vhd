@@ -6,8 +6,8 @@ use work.calculator_pkg.all;
 entity calculator is
   
   port (
-    sys_clk   : in  std_logic;
-    sys_res_n : in  std_logic;
+    clk   : in  std_logic;
+    reset : in  std_logic;
 	 mode : in std_logic;
     keyboard_symbol: in CALCULATOR_SYMBOL_TYPE;
 	 memory_ready : in std_logic;
@@ -20,30 +20,30 @@ entity calculator is
 end calculator;
 
 architecture behav of calculator is
- type CALCULATOR_FSM_STATE_TYPE is (START, NUMBER_PARSED, OPERATOR_PARSED, PAUSE_FOR_RS232, ERROR);
- signal calculator_fsm_state, calculator_fsm_state_next : CALCULATOR_FSM_STATE;
+ type CALCULATOR_FSM_STATE_TYPE is (START, NUMBER_PARSED, OPERATOR_PARSED, PAUSE_FOR_RS232, ERROR_STATE);
+ signal calculator_fsm_state, calculator_fsm_state_next : CALCULATOR_FSM_STATE_TYPE;
  signal operand : integer;
  signal result : integer;
  signal operator : integer;
  signal dummy_result: integer;
 begin
-	next_state : process (calcular_fsm_state, keyboard_symbol, mode, memory_ready)
+	next_state : process (calculator_fsm_state, mode)
 	begin
-		calculator_fsm_state_next <= calculator_fsm_state;
+	calculator_fsm_state_next <= calculator_fsm_state;
 		case calculator_fsm_state is
 			when START =>
-			 if mode='1' then
-					calculator_fsm_state <= PAUSE_FOR_RS232;
-			 elsif keyboard_symbol.input_type=NUMBER then
+			if mode='1' then
+					calculator_fsm_state_next <= PAUSE_FOR_RS232;
+			elsif keyboard_symbol.input_type=NUMBER then
 					operand <= keyboard_symbol.input_value;
 					operator <= -1;
 			      calculator_fsm_state_next <= NUMBER_PARSED;
 			 elsif keyboard_symbol.input_type=OPCODE then
-					 if keyboard_symbol.input_value=SUB;
+					 if keyboard_symbol.input_value=SUBT then
 						calculator_fsm_state_next <= NUMBER_PARSED;
-					 else 
-					   calculator_fsm_state_next <= ERROR;
-					 end if;
+					else 
+					 calculator_fsm_state_next <= ERROR_STATE;
+					end if;
 			 end if;
 			when NUMBER_PARSED =>
 			 if mode='1' then
@@ -73,20 +73,26 @@ begin
 			   else
 					calculator_fsm_state_next <=START;
 				end if;
-			end case;
+			when ERROR_STATE =>
+			 if mode='1' then
+					calculator_fsm_state_next <= PAUSE_FOR_RS232;
+			   else
+					calculator_fsm_state_next <=START;
+				end if;
+				end case;
 	end process next_state;
 	
 	output : process(calculator_fsm_state)
 	begin
-		case calculator_fsm_state is
-		 when OPERATOR_PARSED
+		--case calculator_fsm_state is
+		 --when OPERATOR_PARSED
 	end process output;
 	
-	sync :  process(sys_clk, sys_res_n)
+	sync :  process(clk, reset)
 	begin
-		if sys_res_n = '0' then
+		if reset = '0' then
 			calculator_fsm_state <= START;
-     elsif rising_edge(sys_clk) then
+     elsif rising_edge(clk) then
       calculator_fsm_state <= calculator_fsm_state_next;
 	 end if;
 	end process sync;

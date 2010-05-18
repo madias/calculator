@@ -20,7 +20,8 @@ entity communication is
 end communication;
 
 architecture behav of communication is
-
+type COMMUNICATION_FSM_STATE_TYPE is (START, IDLE, TRANSFER_REQUEST, TRANSFER_READY, DATA, STOP);
+signal communication_fsm_state, communication_fsm_state_next : COMMUNICATION_FSM_STATE_TYPE; 
 begin
-
+	
 end behav;
