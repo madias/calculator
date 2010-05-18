@@ -5,6 +5,7 @@ use work.calculator_pkg.all;
 use work.textmode_vga_component_pkg.all;
 use work.textmode_vga_pkg.all;
 use work.textmode_vga_platform_dependent_pkg.all; 
+use work.vga_pll.all;
 
 -------------------------------------------------------------------------------
 -- ENTITY
@@ -38,6 +39,9 @@ architecture behav of screen is
 	constant BLINK_INTERVAL_MS : integer := 10;
    constant SYNC_STAGES : integer := 2; 
 	
+	-- for testing
+	signal dummy_sync : std_logic;
+
 	signal command_sync : std_logic_vector(COMMAND_SIZE - 1 downto 0);
 	signal command_data_sync : std_logic_vector(3*COLOR_SIZE + CHAR_SIZE - 1 downto 0);
 	signal free_sync : std_logic;
@@ -79,6 +83,16 @@ begin
 			screen_fsm_state <= screen_fsm_state_next;
 	 end if;
 	end process sync;
+
+-- PLL for vga modul.
+	vga_pll_unit : vga_pll
+	port map
+	(
+		areset => reset,
+		inclk0 => clk,
+		c0 => vga_clk_sync,
+		locked => dummy_sync 
+	);
 
 --IP-Core
 	vga_unit : textmode_vga

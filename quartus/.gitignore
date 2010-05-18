@@ -10,14 +10,16 @@
 *.summary
 *.pin
 *.pof
-*.qpf
+#*.qpf
 *.qsf
 *.qws
 *.sof
+*.smsg
+*.txt
 db/
 incremental_db/
 simulation/
 
 # => excludes *.sof from ignoring.
 #!*.sof
-#!*.qpf
+!*.qpf
