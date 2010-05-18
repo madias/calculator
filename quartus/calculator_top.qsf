@@ -1,0 +1,93 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2010 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II
+# Version 9.1 Build 304 01/25/2010 Service Pack 1 SJ Web Edition
+# Date created = 08:41:33  April 27, 2010
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		calculator_top_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY Stratix
+set_global_assignment -name DEVICE Auto
+set_global_assignment -name TOP_LEVEL_ENTITY calculator_top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP1"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "08:41:33  APRIL 27, 2010"
+set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP1"
+set_global_assignment -name DEVICE_FILTER_PACKAGE ANY
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT ANY
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE ANY
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name MISC_FILE /homes/s0726419/Desktop/calculator/quartus/calculator_top.dpf
+set_global_assignment -name VHDL_FILE ../src/ps2/ps2_transceiver_beh.vhd
+set_global_assignment -name VHDL_FILE ../src/ps2/ps2_transceiver.vhd
+set_global_assignment -name VHDL_FILE ../src/ps2/ps2_keyboard_controller_pkg.vhd
+set_global_assignment -name VHDL_FILE ../src/ps2/ps2_keyboard_controller_beh.vhd
+set_global_assignment -name VHDL_FILE ../src/ps2/ps2_keyboard_controller.vhd
+set_global_assignment -name VHDL_FILE ../src/ps2/ps2_transceiver_pkg.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/mjl_stratix/textmode_vga_platform_dependent_pkg.vhd
+set_global_assignment -name VHDL_FILE ../src/math/math_pkg.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_component_pkg.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/video_memory_beh.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/video_memory.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_v_sm_beh.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_v_sm.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_struct.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_pkg.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_h_sm_beh.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_h_sm.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/interval_beh.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/interval.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/font_rom_beh.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/font_rom.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/font_pkg.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/console_sm_sync_beh.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/console_sm_sync.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/console_sm_beh.vhd
+set_global_assignment -name VHDL_FILE ../src/textmode_vga/console_sm.vhd
+set_global_assignment -name VHDL_FILE ../src/calculator_top.vhd
+set_global_assignment -name VHDL_FILE ../src/memory.vhd
+set_global_assignment -name VHDL_FILE ../src/screen.vhd
+set_global_assignment -name VHDL_FILE ../src/calculator_pkg.vhd
+set_global_assignment -name VHDL_FILE ../src/communication.vhd
+set_global_assignment -name VHDL_FILE ../src/calculator.vhd
+set_global_assignment -name VHDL_FILE ../src/input.vhd
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
