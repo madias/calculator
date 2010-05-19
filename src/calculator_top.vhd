@@ -21,7 +21,7 @@ entity calculator_top is
 -- output pins to RGB connector / VGA screen
        r0_pin, r1_pin, r2_pin : out std_logic;         -- to RGB connector "red"
        g0_pin, g1_pin, g2_pin : out std_logic;         -- to RGB connector "green"
-       b0_pin, b1_pin , b2_pin : out std_logic;         -- to RGB connector "blue"
+       b0_pin, b1_pin  : out std_logic;         -- to RGB connector "blue"
        hsync_pin : out std_logic;         -- to RGB connector "Hsync"
        vsync_pin: out std_logic         -- to RGB connector "Vsync"
 	);
@@ -38,7 +38,7 @@ end calculator_top;
 
 architecture behav of calculator_top is
 
-signal r_0_sig, r_1_sig, r_2_sig, b_0_sig, b_1_sig, b_2_sig, g_0_sig, g_1_sig, g_2_sig  : std_logic;
+signal r_0_sig, r_1_sig, r_2_sig, b_0_sig, b_1_sig, g_0_sig, g_1_sig, g_2_sig  : std_logic;
 signal hsync_sig, vsync_sig : std_logic;
 
 signal mode_sig, memory_ready_sig, caluclator_ready_sig: std_logic;
@@ -81,8 +81,7 @@ begin
 		g_1 => g_1_sig,
 		g_2 => g_2_sig,
 		b_0 => b_0_sig,
-		b_1 => b_1_sig,
-		b_2 => b_2_sig
+		b_1 => b_1_sig
 	);
 
 --calculator_unit
@@ -125,7 +124,7 @@ memory_unit: memory
 -- make the wiring for RGB pins
 r0_pin <= r_0_sig; r1_pin <= r_1_sig; r2_pin <= r_2_sig;
 g0_pin <= g_0_sig; g1_pin <= g_1_sig; g2_pin <= g_2_sig;
-b0_pin <= b_0_sig; b1_pin <= b_1_sig; b2_pin <= b_2_sig; 
+b0_pin <= b_0_sig; b1_pin <= b_1_sig; 
 
 -- make the wiring for hsync and vsync pins 
 vsync_pin <= vsync_sig;

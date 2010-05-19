@@ -5,7 +5,6 @@ use work.calculator_pkg.all;
 use work.textmode_vga_component_pkg.all;
 use work.textmode_vga_pkg.all;
 use work.textmode_vga_platform_dependent_pkg.all; 
-use work.vga_pll.all;
 
 -------------------------------------------------------------------------------
 -- ENTITY
@@ -23,7 +22,7 @@ entity screen is
 	vsync_n: out std_logic;
 	r_0, r_1, r_2: out std_logic;
 	g_0, g_1, g_2: out std_logic;
-	b_0, b_1, b_2: out std_logic
+	b_0, b_1: out std_logic
 	);
 end screen;
 
@@ -39,9 +38,6 @@ architecture behav of screen is
 	constant BLINK_INTERVAL_MS : integer := 10;
    constant SYNC_STAGES : integer := 2; 
 	
-	-- for testing
-	signal dummy_sync : std_logic;
-
 	signal command_sync : std_logic_vector(COMMAND_SIZE - 1 downto 0);
 	signal command_data_sync : std_logic_vector(3*COLOR_SIZE + CHAR_SIZE - 1 downto 0);
 	signal free_sync : std_logic;
@@ -84,16 +80,16 @@ begin
 	 end if;
 	end process sync;
 
--- PLL for vga modul.
+--VGA-PLL
 	vga_pll_unit : vga_pll
 	port map
 	(
-		areset => reset,
-		inclk0 => clk,
-		c0 => vga_clk_sync,
-		locked => dummy_sync 
+	areset	=> reset,
+	inclk0 => clk,
+	c0	=> vga_clk_sync
 	);
 
+	
 --IP-Core
 	vga_unit : textmode_vga
 	generic map
@@ -112,7 +108,7 @@ begin
 	free => free_sync,
 	-- external vga interface.
 	vga_clk => vga_clk_sync,
-	vga_res_n => vga_res_n_sync,
+	vga_res_n => reset,
 	vsync_n => vga_vsync_n_sync,
 	hsync_n => vga_hsync_n_sync,
 	r(0) => vga_r0_sync,

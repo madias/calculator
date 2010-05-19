@@ -21,7 +21,7 @@ component screen is
 	vsync_n: out std_logic;
 	r_0, r_1, r_2: out std_logic;
 	g_0, g_1, g_2: out std_logic;
-	b_0, b_1, b_2: out std_logic
+	b_0, b_1: out std_logic
 	);
 end component screen;
 
@@ -75,6 +75,13 @@ component memory is
 	 memory_ready: out std_logic);
 end component memory;
 
+component vga_pll
+	port	(
+		areset		: IN STD_LOGIC  := '0';
+		inclk0		: IN STD_LOGIC  := '0';
+		c0		: OUT STD_LOGIC 
+	);
+end component;
 
 
 CONSTANT NUMBER: std_logic:='0';
