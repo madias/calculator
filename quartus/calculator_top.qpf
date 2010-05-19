@@ -1,6 +1,6 @@
 # -------------------------------------------------------------------------- #
 #
-# Copyright (C) 1991-2010 Altera Corporation
+# Copyright (C) 1991-2009 Altera Corporation
 # Your use of Altera Corporation's design tools, logic functions 
 # and other software and tools, and its AMPP partner logic 
 # functions, and any output files from any of the foregoing 
@@ -17,13 +17,13 @@
 # -------------------------------------------------------------------------- #
 #
 # Quartus II
-# Version 9.1 Build 304 01/25/2010 Service Pack 1 SJ Web Edition
-# Date created = 08:41:33  April 27, 2010
+# Version 9.1 Build 222 10/21/2009 SJ Full Version
+# Date created = 21:08:14  May 19, 2010
 #
 # -------------------------------------------------------------------------- #
 
 QUARTUS_VERSION = "9.1"
-DATE = "08:41:33  April 27, 2010"
+DATE = "21:08:14  May 19, 2010"
 
 # Revisions
 

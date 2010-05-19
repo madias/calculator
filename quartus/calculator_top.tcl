@@ -63,7 +63,6 @@ if {$make_assignments} {
 	set_global_assignment -name VHDL_FILE ../src/ps2/ps2_keyboard_controller_beh.vhd
 	set_global_assignment -name VHDL_FILE ../src/ps2/ps2_keyboard_controller.vhd
 	set_global_assignment -name VHDL_FILE ../src/ps2/ps2_transceiver_pkg.vhd
-	set_global_assignment -name VHDL_FILE ../src/textmode_vga/mjl_stratix/textmode_vga_platform_dependent_pkg.vhd
 	set_global_assignment -name VHDL_FILE ../src/math/math_pkg.vhd
 	set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_component_pkg.vhd
 	set_global_assignment -name VHDL_FILE ../src/textmode_vga/video_memory_beh.vhd
@@ -72,6 +71,7 @@ if {$make_assignments} {
 	set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_v_sm.vhd
 	set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_struct.vhd
 	set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_pkg.vhd
+	set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_platform_dependent_pkg.vhd
 	set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_h_sm_beh.vhd
 	set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga_h_sm.vhd
 	set_global_assignment -name VHDL_FILE ../src/textmode_vga/textmode_vga.vhd
@@ -91,6 +91,13 @@ if {$make_assignments} {
 	set_global_assignment -name VHDL_FILE ../src/communication.vhd
 	set_global_assignment -name VHDL_FILE ../src/calculator.vhd
 	set_global_assignment -name VHDL_FILE ../src/input.vhd
+
+#	set_global_assignment -name VHDL_FILE ../src/vga_pll/vga_pll.cmp
+#	set_global_assignment -name VHDL_FILE ../src/vga_pll/vga_pll.ppf
+#	set_global_assignment -name VHDL_FILE ../src/vga_pll/vga_pll.qip
+	set_global_assignment -name VHDL_FILE ../src/vga_pll/vga_pll.vhd
+	set_global_assignment -name VHDL_FILE ../src/vga_pll/vga_pll_inst.vhd
+
 	set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 	set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
